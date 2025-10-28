@@ -18,8 +18,10 @@
 
 ## Analysis
 ### Introductory Data Jobs Dashboard
-#### Data Tab: I imported the following data first into my excel workbook an created it in table format.
 ![EXCEL_bh8kqIsHW8](https://github.com/user-attachments/assets/80ea0ac0-6181-4459-978c-b2704376500a)
+
+#### Data Tab: I imported the following data first into my excel workbook an created it in table format.
+<img width="1814" height="598" alt="image" src="https://github.com/user-attachments/assets/91c06708-f22a-418a-8b98-31c8522a76a0" />
 
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
 <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
