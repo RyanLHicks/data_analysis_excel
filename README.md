@@ -19,7 +19,7 @@
 ## Analysis
 ### Introductory Data Jobs Dashboard
 #### Data Tab: I imported the following data first into my excel workbook an created it in table format.
-<img width="1837" height="776" alt="image" src="https://github.com/user-attachments/assets/77f58264-1297-4482-b789-5f2ca89167b1" />
+![EXCEL_bh8kqIsHW8](https://github.com/user-attachments/assets/80ea0ac0-6181-4459-978c-b2704376500a)
 
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
 <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
@@ -107,12 +107,93 @@ Results:
 Interpretation: This expanded the details for earnings that each job title, country, and schedule may pay for the main dashboard. 
 
 #### Job Country Tab
+- For this section I again transferred over data from the data validation tab with the country information and then created a formula to find the median formula for each country:
+```
+=MEDIAN(
+IF(
+(jobs[job_country]=A3)*
+(jobs[salary_year_avg]<>0)*
+(jobs[job_title_short]=title)*
+(ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
+jobs[salary_year_avg]))
+and
+=SORT(FILTER(A2:B112,ISNUMBER(B2:B112)),2,-1)
+```
+I used a if statement to filter through my specified parameters that I want to filter specefically the job country not equaling 0, the job title using the full title and the job schedule type. The results show an error in some of the countries but that just indicates that those countries haven't listed those positions
+ 
+Results:
+
+<img width="743" height="693" alt="image" src="https://github.com/user-attachments/assets/bf79e6c7-0a33-4dc0-8d5e-89a343150033" />
+
+Interpretation: Depending on what job is selected in the main tab, you will be able to find the detailed list of job countries and job titles with the associated median salaries that support each. 
 
 #### Job Title Tab
+- This section again piggybacks off of the data valadation tab and first imports the job titles then finds the median salary for each using the following formula
+```
+=MEDIAN(
+  IF(
+    (jobs[job_title_short]=A5)*
+    (jobs[salary_year_avg]<>0)*
+(jobs[job_country]=country)*
+(ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
+jobs[salary_year_avg]
+  )
+)
+and
+=SORT(FILTER(A2:B11,ISNUMBER(B2:B11)),2,1)
+and
+=H2=IF($D2<>title,$E2,NA())
+```
+After running the formula that refrences the job title, making sure that the salary does not equal 0, searches the job shchedule type and finds everything that is true along with the median salary for a specefic job title.
+
+Results:
+
+<img width="1196" height="298" alt="image" src="https://github.com/user-attachments/assets/c72e3ef8-9eb0-4457-972b-2105d18a5e76" />
+
+Interpretation: This is plain and simple finding the median salary for each job title depending on only the titles for this section. Will be linked to the main tab for ease of use, showing that senior data scientists pay the most on average and regular data analysts pay the least.
 
 #### Job Schedule Tab
+- This section focused soley on the job schedule that is Full-Time, Contractor, Part-Time, Internship, or Temp Work and here is the excel formula which is similar in format to the previous one's to align all together in the dashboard:
+```
+=MEDIAN(IF
+((jobs[job_title_short]=title)*
+(jobs[salary_year_avg]<>0)*
+(jobs[job_country]=country)*
+(ISNUMBER(SEARCH(A1,jobs[job_schedule_type]))),
+jobs[salary_year_avg]))
+and
+=SORT(FILTER(A1:B5,ISNUMBER(B1:B5)),2,1)
+and
+=IF($D1<>type,$E1,NA())
+```
+
+This strictly finds how each job schedule type salary compares to each other and sorts them . 
+
+Results:
+
+<img width="1019" height="301" alt="image" src="https://github.com/user-attachments/assets/92d24f78-0fb1-4bbc-b9ae-d247c85b6bd3" />
+
+Interpretation: Just seeing that full-time positions pay the most on average and internships pay the least.
 
 #### Job Platform 
+- This section focuses on various job searching platforms and uncovers which platforms have the most activity when considering a specefic job title and will also be linked to the main jobs dashboard for quick visualizaiton. Instead of using a IF statement we use a COUNT statement but everything else is similar:
+```
+=COUNT(
+IF(
+(jobs[job_country]=country)*
+(jobs[job_title_short]=title)*
+(ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
+(jobs[job_via]=A2),
+jobs[salary_year_avg]))
+and
+=SORT(A2:B594,2,-1)
+```
+
+Results:
+
+<img width="922" height="707" alt="image" src="https://github.com/user-attachments/assets/4b45cbb0-869f-4622-8754-36419718abe8" />
+
+Interpretation: After entering the formulas to find how common wach job platform is, I sorted them from largest to smalles and then graphed it to find the linkedin and indeed were the most commonly posted for that specefic job title selected in the main tab.
 
 ### Deep Dive into Data Jobs and Skills Pay Information  
 
