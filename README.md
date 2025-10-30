@@ -198,6 +198,69 @@ Results:
 Interpretation: After entering the formulas to find how common wach job platform is, I sorted them from largest to smalles and then graphed it to find the linkedin and indeed were the most commonly posted for that specefic job title selected in the main tab.
 
 ### Deep Dive into Data Jobs and Skills Pay Information  
+- This section is more specefic and intentional with using power pivot to determine skills associated with jobs. This helped me use a new feature to me that I didn't know existed until this project and I can really see the potential use cases for this tool. After importing all the data provided the power pivot tool I used automatically created this data sheet for this excel document for easy manipulation of desired skills.
+![EXCEL_pyzVZIvS7O](https://github.com/user-attachments/assets/84e16334-7d15-492e-8914-56e394a0864d)
+
+#### Jobs Skills Salary
+- Using the power pivot function and the data I imported, I created a pivot table for ease of customization and use to look at the count of jobs for any given skills.
+![EXCEL_YYAYEv8nrT](https://github.com/user-attachments/assets/bc13010a-00b6-453b-84d3-c630bc3d9daa)
+
+- Field Organization:
+I organized the count of all the jobs in the values section and the job skills titles in the rows to count all of the jobs specefically within the pivot table from the power pivot data. I also created two slicer to find out where they are in the world and what specefic title is associated with skill count for data jobs.
+
+<img width="353" height="769" alt="image" src="https://github.com/user-attachments/assets/438b92b8-5e14-4987-ad5f-4877aa37b002" />
+
+<img width="448" height="265" alt="image" src="https://github.com/user-attachments/assets/26f179c2-8510-4f9a-acb0-f53758ce75d2" />
+
+- Intrepretation: This allows easy visualization between job count and the job skills against customizable job titles and the country they are located in. Using no job title filters or country filter, we can see that SQL, Python, and Tableau are among the top desired skills within the data analyst field.
+
+#### Job Skills Availability
+- For this section we can dive deeper into how much each data job might expect for pay and find the number of skills needed on average for a specefic job title. 
+ ![EXCEL_9l6B7sgSMg](https://github.com/user-attachments/assets/a782b8aa-7d92-4bdb-88b8-4d3a6f739961)
+
+To do this I first created 2 custom functions within power pivot and they are as follows:
+```
+med salary:=CALCULATE([median salary], CROSSFILTER(data_jobs_salary[job_id],data_jobs_skills[job_id],Both))
+and
+skills per job:=DIVIDE([skill count], [job count])
+```
+Then I inserted these custom functions into the field list for the pivot table along with the job title to find out what is the median pay and skills for each job:
+
+<img width="347" height="759" alt="image" src="https://github.com/user-attachments/assets/530235fd-346f-4772-a3dd-8c3485fca612" />
+
+- Interpretation: This customizable section dives deep on how many skills are required for a given job title and allows the ability to hone in on certain countries. Along with the scatter plot we are able to see how much a job might pay and how many skills are required for that given job. For example a Senior Data Engineer may expect to be paid around $155,000 but may need around 8 learned skills.
+
+#### Job Skills Countries
+- The following section looks specefically at the median salary within the entire world, the United States and non US states to grab a good picture of what to expect as a US resident comparatively
+
+![EXCEL_bvsMsX66CI](https://github.com/user-attachments/assets/d188ac14-1c5f-421a-a4b9-c25e9f280787)
+
+To do this I created 3 new value fields in the forms of functions for the entire median salary worldwide, in the USA specefically, and any other desired country for easy comparission:
+```
+median salary:=MEDIAN(data_jobs_salary[salary_year_avg])
+and
+median_salary_us:=CALCULATE([median salary], data_jobs_salary[job_country]="United States")
+and
+median salary non us:=CALCULATE([median salary], data_jobs_salary[job_country]<>"United States")
+```
+
+Then I inserted the value functions in the field list along witht the job title:
+
+<img width="341" height="742" alt="image" src="https://github.com/user-attachments/assets/3b4ef5d1-e687-424a-86a3-623a4ac1ccb1" />
+
+- Interpretation: This section mainly focuses on median salary within any speceified country mainly for comparission and location decisions to make. This shows that in general a business analyst might expect to make $85,000 but if you live in the US you could expect a slight increase to $90.000 and in canada a somewhat significant decrease to $75,000 per year. 
+
+#### Skills Likliehood
+- This section further explores the skills with custom function to find what percentage is a skill likely to appear on a given job title. It can also be broken down even further by the desired country.
+
+![EXCEL_q4W9R62Qed](https://github.com/user-attachments/assets/123468e8-d5d0-4b21-b3c1-861c5858cca0)
+
+The formula entered in to find the skill liklihood revolves around dividing the skill count total by the job count total to get a good picture of what skills are most likely given a job title.
+```
+skill likliehood:=DIVIDE([skill count], [job count])
+```
+
+  
 
 ## Conclusion
 ### Skills Learned
