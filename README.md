@@ -259,14 +259,16 @@ The formula entered in to find the skill liklihood revolves around dividing the 
 ```
 skill likliehood:=DIVIDE([skill count], [job count])
 ```
-
-  
+- Interpretation: This section gives great insight to the probability of a skill occuring within a certain job title. We can see that skills like SQL and python have high degree of probability of showing up on any job description and allows the aspiring data analyst to make intelligent decisions on what skills to learn first. 
 
 ## Conclusion
 ### Skills Learned
-
+- Multi Step and Advanced Excel Formulas
+- Pivot Tables
+- Power Pivot
+- Power Query
 ### The Future
-
+- I hope to use these learned skills to advance my personal career and use it to analyze a wide variety of disciplines ready to be looked at. I think using this tool is great for piecing together massive ammounts of data and visualizing it all in one. I want to eventually use it for my passions in nuclear energy and pharmacy and uncover hidden data to help me make well informed decisions based on critical data
 ### Sources
 - Luke Barrouse
 - Jobs Data Information
