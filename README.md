@@ -29,7 +29,7 @@ This is the final dashboard that allows anyone to select a job title, country, s
 <img width="1814" height="598" alt="image" src="https://github.com/user-attachments/assets/91c06708-f22a-418a-8b98-31c8522a76a0" />
 
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
-<img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
+  <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
 
 - The Purpose: This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
 
