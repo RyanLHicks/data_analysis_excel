@@ -31,9 +31,9 @@ This is the final dashboard that allows anyone to select a job title, country, s
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
   <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
 
-**- The Purpose:** This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
+- **The Purpose:** This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
 
-**- Excel Functions Explaination:** To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
+- **Excel Functions Explaination:** To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
 
 ```
 =UNIQUE(jobs[job_title_short])
