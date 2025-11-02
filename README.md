@@ -1,8 +1,8 @@
 # Excel Data Analysis
 ## Introduction
 ### Background
-- This is part of a 4-part learning series where I try and learn the best data analysis and extraction tools that are currently available. My goal is to learn Python, SQL, Power BI, and Excel to fully broaden my understanding of the tools and understanding the real-life applications each carry.
-- I want to enhance my already learned excel skills by learning, DAX, Power Pivot, Power Query, Pivot Tables, and advanced formulas within excel. I am using a data jobs data set that is publicily sourced to analyze and hone in to what skills pay the most within certain job titles and locations around the world.
+- This is part of a 4-part learning series where I try and learn the best data analysis and extraction tools that are currently available. My goal is to learn Python, SQL, Power BI, and Excel to fully broaden my understanding of the tools and use them in real-life applications.
+- I want to enhance my already learned excel skills by learning, DAX, Power Pivot, Power Query, Pivot Tables, and advanced formulas within excel. I am using a data jobs data set that is publicily sourced to analyze and determine what skills pay the most within certain job titles and locations around the world.
   
 ### Goals
 - Build a jobs data dashboard to digest the landscape of the data analytics field.
