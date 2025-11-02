@@ -31,9 +31,9 @@ This is the final dashboard that allows anyone to select a job title, country, s
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
   <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
 
-- The Purpose: This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
+**- The Purpose:** This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
 
-- Excel Functions Explaination: To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
+**- Excel Functions Explaination:** To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
 
 ```
 =UNIQUE(jobs[job_title_short])
@@ -47,7 +47,7 @@ IF(
 (ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
 jobs[salary_year_avg]))
 ```
-- Results:
+**- Results:**
 
   <img width="313" height="213" alt="image" src="https://github.com/user-attachments/assets/7b2f4d6e-72b1-4c12-b831-549e9034a73a" />
 
@@ -55,7 +55,7 @@ jobs[salary_year_avg]))
 ```
 =SORT(A2:B11,2,-1,)
 ```
-- Results:
+**- Results:**
 
   <img width="213" height="220" alt="image" src="https://github.com/user-attachments/assets/a515a375-3199-462b-bae7-98f3d8d658e0" />
 
@@ -67,7 +67,7 @@ and
 
 =SORT(H2#)
 ```
-- Results:
+**- Results:**
 
   <img width="254" height="759" alt="image" src="https://github.com/user-attachments/assets/326cb237-463d-4ec0-8f35-f8d7b1c4c455" />
 
@@ -79,14 +79,18 @@ and
 
 =FILTER(K2#,NOT(ISNUMBER(SEARCH("and",K2#)))*(K2#<>0))
 ```
-- Results:
+**- Results:**
 
-<img width="433" height="556" alt="image" src="https://github.com/user-attachments/assets/da8597e2-fcfc-4bfb-8375-4b2b47ef9f85" />
+  <img width="433" height="556" alt="image" src="https://github.com/user-attachments/assets/da8597e2-fcfc-4bfb-8375-4b2b47ef9f85" />
 
-- Interpretations: This is used as reference  point and will be linked to other tabs that will further break down each section including job title, country, salary, type, and platform. Really a starting point to use a 
+**- Interpretations:** By looking at this sheet briefly we can get a good idea of the demand for each job title, where the data analyst is the most abundant with 6,480 and highly niche jobs such as cloud engineers only have 23 jobs within a specific country selected. This sheet is used mainly as a refrence point for others to be more specific for the country, schedule, and platform. 
 
 #### Median Salary Tab
-- After transferring over the unique job titles from the data validation tab, I took the median salary of the job titles and sorted them from least to greatest using the following formulas:
+
+**- The Purpose:** This sheet is to explain the median salary for each job title using specific conditions to be met.
+
+**- Excel Functions Explaination:** After transferring over the unique job titles from the data validation tab, I took the median salary of the job titles and sorted them from least to greatest using the following formulas. The MEDIAN function aggregates when specific conditions are met within the IF statement which is when the job title meets any title listed in the column, the salary year average does not equal 0 and the salary year average contain a value. The SORT function is used to sort the array from smallest value to largest.
+
 ```
 =MEDIAN(
   IF(
@@ -100,19 +104,19 @@ and
 
 =SORT(A2#:B2#,2,1)
 ```
-Results:
+**- Results:**
 
-<img width="546" height="223" alt="image" src="https://github.com/user-attachments/assets/3d8979ee-756c-4401-a9ee-116f0148b455" />
+  <img width="546" height="223" alt="image" src="https://github.com/user-attachments/assets/3d8979ee-756c-4401-a9ee-116f0148b455" />
 
-Then I used the formula to define where we are taking the salaries from to use on our final dashboard to sort based on a specific job title.
+- Then I used the formula to define where we are taking the salaries from to refrence on our final dashboard to sort based on a specific job title.
 ```
 =XLOOKUP(title,D2:D11,E2:E11)
 ```
-Results:
+**- Results:**
 
-<img width="84" height="27" alt="image" src="https://github.com/user-attachments/assets/105bfd60-d0c8-46dc-9376-daa4de2139c8" />
+  <img width="84" height="27" alt="image" src="https://github.com/user-attachments/assets/105bfd60-d0c8-46dc-9376-daa4de2139c8" />
 
-Interpretation: This expanded the details for earnings that each job title, country, and schedule may pay for the main dashboard. 
+**- Interpretation:** This expanded the details for earnings that each job title, country, and schedule may pay for the main dashboard. We can see that in this country the highest median salary is a senior data scientist at $155,000 and the lowest median salary is $85,000 for a business analyst.
 
 #### Job Country Tab
 - For this section I again transferred over data from the data validation tab with the country information and then created a formula to find the median formula for each country:
