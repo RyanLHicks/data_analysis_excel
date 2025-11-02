@@ -1,24 +1,29 @@
 # Excel Data Analysis
 ## Introduction
 ### Background
-- This is part of a 4-part learning series where I try and learn the best data analysis and extraction tools that are currently available. My goal is to learn Python, SQL, Power BI, and Excel to fully broaden my understanding of the tools and use them in real-life applications.
+- This is part of a 4-part learning series where I learn the best data analysis and extraction tools that are currently available. My goal is to learn Python, SQL, Power BI, and Excel to fully broaden my understanding of the tools and use them in real-life applications.
 - I want to enhance my already learned excel skills by learning, DAX, Power Pivot, Power Query, Pivot Tables, and advanced formulas within excel. I am using a data jobs data set that is publicily sourced to analyze and determine what skills pay the most within certain job titles and locations around the world.
   
 ### Goals
-- Build a jobs data dashboard to digest the landscape of the data analytics field.
-- Transform insights using visualization tools such as charts, graphs, and tables.
-- Use advanced formulas and excel languages to dive deep into specific questions.
+- Build a jobs data dashboard to digest the landscape of the data analytics job market.
+- Transform usable insights with visualization tools such as charts, graphs, and tables.
+- Use advanced formulas and excel languages to dive deep into specific questions to make realistic decisions.
 
 ### Overview
-- I will first import the publicly available information from data analytic jobs from around the world within csv format.
-- Dive deep into the data with complex LOOKUP, COUNT, IF, ISNUMBER, and MEDIAN functions
-- Visualize the data into introductory graphs that link the job title, job country, and job type into one easy to filter section
-- Use the same data and import into a new book that uses more advanced excel functionalities such as, Power Pivot, DAX, and Power Query to better analyze the dataset.
-- Bring it all together with descriptive charts, line graphs and tables to understand the pay associated with popular data analytic skills.
+- I will first import the publicly available job data information that collected data around the world in csv format from 2023.
+- Analyze the dataset with complex LOOKUP, COUNT, IF, ISNUMBER, and MEDIAN functions.
+- Visualize the data into introductory graphs and dropdown menus that contatin the job titles, job countries, and job types that automatically filter their associated median salary, platform, and count of jobs.
+- Use the same data and import it into a new workbook that will use more advanced excel functionalities such as, Power Pivot, DAX, and Power Query to better analyze the dataset and come to more specific conclusions.
+- Bring it all together with descriptive charts, line graphs and tables to understand the pay associated with popular data analytic skills and job titles.
+
+### Process
+- I will walk through each sheet within the excel workbooks and breakdown what formulas were used, how they gave certain results and what we can do with those results for making decisions.
 
 ## Analysis
 ### Introductory Data Jobs Dashboard
 ![EXCEL_bh8kqIsHW8](https://github.com/user-attachments/assets/80ea0ac0-6181-4459-978c-b2704376500a)
+
+This is the final dashboard that allows anyone to select a job title, country, schedule they desire to move forward and get a general idea for what they will see in their job searching journey. 
 
 #### Data Tab: I imported the following data first into my excel workbook an created it in table format.
 <img width="1814" height="598" alt="image" src="https://github.com/user-attachments/assets/91c06708-f22a-418a-8b98-31c8522a76a0" />
@@ -26,11 +31,12 @@
 #### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
 <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
 
-- The function to find the unique values was simple, taking the job title short column in the data section. I then used the following function to count the job titles across the job countries, schedule, and salary:
-*Note - I first used a generic =count function then after devising the other formulas for job country, salary, and type I added in the rest of the formula*
-:
+- The Purpose: This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
+
+- Excel Functions Explaination: To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
+
 ```
-=UNIQUE(jobs[job_title_short
+=UNIQUE(jobs[job_title_short])
 
 and
 
@@ -43,7 +49,7 @@ jobs[salary_year_avg]))
 ```
 - Results:
 
-<img width="313" height="213" alt="image" src="https://github.com/user-attachments/assets/7b2f4d6e-72b1-4c12-b831-549e9034a73a" />
+  <img width="313" height="213" alt="image" src="https://github.com/user-attachments/assets/7b2f4d6e-72b1-4c12-b831-549e9034a73a" />
 
 - After that I used the =SORT function to clean up the data sorting from largest to smallest
 ```
@@ -51,7 +57,7 @@ jobs[salary_year_avg]))
 ```
 - Results:
 
-<img width="213" height="220" alt="image" src="https://github.com/user-attachments/assets/a515a375-3199-462b-bae7-98f3d8d658e0" />
+  <img width="213" height="220" alt="image" src="https://github.com/user-attachments/assets/a515a375-3199-462b-bae7-98f3d8d658e0" />
 
 - Moving on to the unique job countries I used this and sorted them from A to Z:
 ```
@@ -63,7 +69,7 @@ and
 ```
 - Results:
 
-<img width="254" height="759" alt="image" src="https://github.com/user-attachments/assets/326cb237-463d-4ec0-8f35-f8d7b1c4c455" />
+  <img width="254" height="759" alt="image" src="https://github.com/user-attachments/assets/326cb237-463d-4ec0-8f35-f8d7b1c4c455" />
 
 - Finally looking at the job schedule I used the following function to find the job schedules and then sorting them to only find Full-Time, Contractor, Part-Time, Internship, and Temp Work positions because a lot of them pertain to this same schedule in combination with another schedule type (I filtered out the array to not equal 'and' and '0' :
 ```
