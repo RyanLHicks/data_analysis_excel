@@ -28,12 +28,14 @@ This is the final dashboard that allows anyone to select a job title, country, s
 #### Data Tab: I imported the following data first into my excel workbook an created it in table format.
 <img width="1814" height="598" alt="image" src="https://github.com/user-attachments/assets/91c06708-f22a-418a-8b98-31c8522a76a0" />
 
-#### Data Validation Tab: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
+#### Data Validation Sheet: After importing the data I found each unique job title, job country, and job schedule type using various functions within excel.
   <img width="1813" height="796" alt="image" src="https://github.com/user-attachments/assets/dddd7f07-db9b-48c5-887b-5b5cc20df08d" />
 
-- **The Purpose:** This sheet is to consolidate the specific data for the job title with the count, job country, and the job schedule types. I then ordered them in descending order, largest to smallest, A to Z, and true realistic schedule types.
+- **The Purpose:** This sheet is to consolidate the job title, job count, job country, and the job schedule type data. Then it will be used as reference for specific job sheets later used for the main tab.
 
-- **Excel Functions Explaination:** To find the seperate values of the job titles was simple, taking the job title short column in the data section and letting excel sort them out with the UNIQUE funciton. The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column:
+- **Excel Functions Explaination:**
+  - To find the seperate values of the job titles was simple, I just took the job title short column in the data section and I let excel sort them out using the UNIQUE funciton and the column.
+  - The second formula used a COUNT function based on a IF statment when specific conditions such as: job_country equals any country name, job_title_short equal A2 which is any generic job title, ISNUMBER and SEARCH; searches the job_schedule_type to meet the specific text in that column, and salary_year_average has a value in that column.
 
 ```
 =UNIQUE(jobs[job_title_short])
@@ -47,19 +49,21 @@ IF(
 (ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
 jobs[salary_year_avg]))
 ```
-**- Results:**
+- **Results:**
 
   <img width="313" height="213" alt="image" src="https://github.com/user-attachments/assets/7b2f4d6e-72b1-4c12-b831-549e9034a73a" />
 
 - After that I used the =SORT function to clean up the data sorting from largest to smallest
+
 ```
 =SORT(A2:B11,2,-1,)
 ```
-**- Results:**
+- **Results:**
 
   <img width="213" height="220" alt="image" src="https://github.com/user-attachments/assets/a515a375-3199-462b-bae7-98f3d8d658e0" />
 
 - Moving on to the unique job countries I used this and sorted them from A to Z:
+
 ```
 =UNIQUE(jobs[job_country])
 
@@ -67,7 +71,7 @@ and
 
 =SORT(H2#)
 ```
-**- Results:**
+- **Results:**
 
   <img width="254" height="759" alt="image" src="https://github.com/user-attachments/assets/326cb237-463d-4ec0-8f35-f8d7b1c4c455" />
 
@@ -79,17 +83,18 @@ and
 
 =FILTER(K2#,NOT(ISNUMBER(SEARCH("and",K2#)))*(K2#<>0))
 ```
-**- Results:**
+- **Results:**
 
   <img width="433" height="556" alt="image" src="https://github.com/user-attachments/assets/da8597e2-fcfc-4bfb-8375-4b2b47ef9f85" />
 
-**- Interpretations:** By looking at this sheet briefly we can get a good idea of the demand for each job title, where the data analyst is the most abundant with 6,480 and highly niche jobs such as cloud engineers only have 23 jobs within a specific country selected. This sheet is used mainly as a refrence point for others to be more specific for the country, schedule, and platform. 
+- **Interpretations:** By looking at this sheet briefly we can get a good idea of the demand for each job title, where the data analyst is the most abundant with 6,480 and highly niche jobs such as cloud engineers only have 23 jobs within a specific country selected. This sheet is used mainly as a refrence point for other sheets to be more specific for the country, schedule, and platform. 
 
-#### Median Salary Tab
+#### Median Salary Sheet
 
-**- The Purpose:** This sheet is to explain the median salary for each job title using specific conditions to be met.
+- **The Purpose:** This sheet explains the median salary for each job title using specific conditions to be met.
 
-**- Excel Functions Explaination:** After transferring over the unique job titles from the data validation tab, I took the median salary of the job titles and sorted them from least to greatest using the following formulas. The MEDIAN function aggregates when specific conditions are met within the IF statement which is when the job title meets any title listed in the column, the salary year average does not equal 0 and the salary year average contain a value. The SORT function is used to sort the array from smallest value to largest.
+- **Excel Functions Explaination:**
+  - After transferring over the unique job titles from the data validation tab, I took the median salary of the job titles and sorted them from least to greatest using the following formulas. The MEDIAN function aggregates when specific conditions are met within the IF statement which is when the job title meets any title listed in the column, the salary year average does not equal 0 and the salary year average contain a value. The SORT function is used to sort the array from smallest value to largest.
 
 ```
 =MEDIAN(
@@ -104,22 +109,27 @@ and
 
 =SORT(A2#:B2#,2,1)
 ```
-**- Results:**
+- **Results:**
 
   <img width="546" height="223" alt="image" src="https://github.com/user-attachments/assets/3d8979ee-756c-4401-a9ee-116f0148b455" />
 
 - Then I used the formula to define where we are taking the salaries from to refrence on our final dashboard to sort based on a specific job title.
+
 ```
 =XLOOKUP(title,D2:D11,E2:E11)
 ```
-**- Results:**
+
+- **Results:**
 
   <img width="84" height="27" alt="image" src="https://github.com/user-attachments/assets/105bfd60-d0c8-46dc-9376-daa4de2139c8" />
 
-**- Interpretation:** This expanded the details for earnings that each job title, country, and schedule may pay for the main dashboard. We can see that in this country the highest median salary is a senior data scientist at $155,000 and the lowest median salary is $85,000 for a business analyst.
+- **Interpretations:** This expanded the details for earnings that each job title, country, and schedule may pay for the main dashboard. We can see that in this country the highest median salary is a senior data scientist at $155,000 and the lowest median salary is $85,000 for a business analyst.
 
-#### Job Country Tab
-- For this section I again transferred over data from the data validation tab with the country information and then created a formula to find the median formula for each country:
+#### Job Country Sheet
+- **The Purpose:** For this section I again transferred over data from the data validation tab with the country information and then created a formula to find the median formula for each country.
+- **Excel Functions Explaination:**
+  - The multistep formula begins with finding the MEDIAN and an IF statement which has to meet whether the; job_country equals any of the countries listed, salary_year_avg does not equal 0, job_title_short equals a listed title, the job_schedule_type is met with my specific parameter defined on the data validation tab, and finally any value that equals the salary_year_avg.
+  - The SORT then FILTER statement filters out the country array and lists the countries values from largest to smallest 
 ```
 =MEDIAN(
 IF(
@@ -128,44 +138,56 @@ IF(
 (jobs[job_title_short]=title)*
 (ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
 jobs[salary_year_avg]))
+
 and
+
 =SORT(FILTER(A2:B112,ISNUMBER(B2:B112)),2,-1)
 ```
-I used a if statement to filter through my specified parameters that I want to filter specifically the job country not equaling 0, the job title using the full title and the job schedule type. The results show an error in some of the countries but that just indicates that those countries haven't listed those positions
  
-Results:
+- **Results:**
 
 <img width="743" height="693" alt="image" src="https://github.com/user-attachments/assets/bf79e6c7-0a33-4dc0-8d5e-89a343150033" />
 
-Interpretation: Depending on what job is selected in the main tab, you will be able to find the detailed list of job countries and job titles with the associated median salaries that support each. 
+- **Interpretations:**
+  - The results show a #NUM! error in some of the countries but that just indicates that those countries haven't listed those positions median salary. 
+  - Depending on what job is selected in the main tab, you will be able to find the detailed list of job countries and job titles with the associated median salaries that support each. For example, the Data Analyst position is selected and it lists U.S Virgin Islands with the highest realistic median salary at $135,242 and Algeria at $44,100 for the lowest.
 
-#### Job Title Tab
-- This section again piggybacks from the data validation tab and first imports the job titles then finds the median salary for each using the following formula
+#### Job Title Sheet
+- **The Purpose:** This sheet is used as another refrence point from the data validation sheet and gives the same insight as the previous sheet but is needed for the main dashboard sheet.
+- **Excel Functions Explaination:**
+  - This is the same formula as the country sheet, but only will display the median salary and job title.
+  - The SORT and FILTER tab performs the same function as above but only includes the job title and median salary amount.
+  - The IF statement below will sort out what job title is selected for the main tab and use the array as the reference.
 ```
 =MEDIAN(
   IF(
-    (jobs[job_title_short]=A5)*
-    (jobs[salary_year_avg]<>0)*
+(jobs[job_title_short]=A5)*
+(jobs[salary_year_avg]<>0)*
 (jobs[job_country]=country)*
 (ISNUMBER(SEARCH(type,jobs[job_schedule_type]))),
 jobs[salary_year_avg]
   )
 )
+
 and
+
 =SORT(FILTER(A2:B11,ISNUMBER(B2:B11)),2,1)
+
 and
+
 =H2=IF($D2<>title,$E2,NA())
 ```
-After running the formula that references the job title, making sure that the salary does not equal 0, searches for the job schedule type and finds everything that is true along with the median salary for a specific job title.
 
-Results:
+- **Results:**
 
 <img width="1196" height="298" alt="image" src="https://github.com/user-attachments/assets/c72e3ef8-9eb0-4457-972b-2105d18a5e76" />
 
-Interpretation: This is plain and simple finding the median salary for each job title depending on only the titles for this section. Will be linked to the main tab for ease of use, showing that senior data scientists pay the most on average and regular data analysts pay the least.
+- **Interpretations:** This is plain and simple finding the median salary for each job title depending on only the titles for this section. Will be linked to the main tab for ease of use, showing that senior data scientists pay the most on average and regular data analysts pay the least, previously found on the median salary sheet. 
 
-#### Job Schedule Tab
-- This section focused solely on the job schedule that is Full-Time, Contractor, Part-Time, Internship, or Temp Work and here is the excel formula which is similar in format to the previous one's to align all together in the dashboard:
+#### Job Schedule Sheet
+- **The Purpose:** This section focused solely on the job schedule that is Full-Time, Contractor, Part-Time, Internship, or Temp Work and here is the excel formula which is similar in format to the previous one's to align all together in the dashboard:
+- **Excel Functions Explaination:** Again this formula is similar to the one's above but the only difference is what the formula will display and here it's the median salary associated with the job schedule type
+  
 ```
 =MEDIAN(IF
 ((jobs[job_title_short]=title)*
@@ -173,22 +195,25 @@ Interpretation: This is plain and simple finding the median salary for each job 
 (jobs[job_country]=country)*
 (ISNUMBER(SEARCH(A1,jobs[job_schedule_type]))),
 jobs[salary_year_avg]))
+
 and
+
 =SORT(FILTER(A1:B5,ISNUMBER(B1:B5)),2,1)
+
 and
 =IF($D1<>type,$E1,NA())
 ```
 
-This strictly finds how each job schedule type salary compares to each other and sorts them. 
+- **Results:**
 
-Results:
+  <img width="1019" height="301" alt="image" src="https://github.com/user-attachments/assets/92d24f78-0fb1-4bbc-b9ae-d247c85b6bd3" />
 
-<img width="1019" height="301" alt="image" src="https://github.com/user-attachments/assets/92d24f78-0fb1-4bbc-b9ae-d247c85b6bd3" />
-
-Interpretation: Just seeing that full-time positions pay the most on average and internships pay the least.
+- **Interpretations:** Just seeing that full-time positions pay the most on average and internships pay the least with $90,000 and $65,000 for data analysts.
 
 #### Job Platform 
-- This section focuses on various job searching platforms and uncovers which platforms have the most activity when considering a specific job title and will also be linked to the main jobs dashboard for quick visualization. Instead of using a IF statement we use a COUNT statement but everything else is similar:
+- **The Purpose:**  This section focuses on various job searching platforms and uncovers which platforms have the most activity when considering a specific job title and will also be linked to the main jobs dashboard for quick visualization. 
+- **Excel Functions Explaination:** Instead of using a MEDIAN statement we use a COUNT statement but everything else is similar with the formulas from above and will display the count of listings by each job platform:
+
 ```
 =COUNT(
 IF(
@@ -197,15 +222,17 @@ IF(
 (ISNUMBER(SEARCH(type,jobs[job_schedule_type])))*
 (jobs[job_via]=A2),
 jobs[salary_year_avg]))
+
 and
+
 =SORT(A2:B594,2,-1)
 ```
 
-Results:
+- **Results:**
 
-<img width="922" height="707" alt="image" src="https://github.com/user-attachments/assets/4b45cbb0-869f-4622-8754-36419718abe8" />
+  <img width="922" height="707" alt="image" src="https://github.com/user-attachments/assets/4b45cbb0-869f-4622-8754-36419718abe8" />
 
-Interpretation: After entering the formulas to find how common which job platform is, I sorted them from largest to smallest and then graphed it to find the Linkedin and indeed were the most posted for that specific job title selected in the main tab.
+- **Interpretations:** After entering the formulas to find how common which job platform is, I sorted them from largest to smallest and then graphed it to find the Linkedin and indeed were the most posted for that data analysts selected in the main tab which was 1490 and 937 total listings for each.
 
 ### Deep Dive into Data Jobs and Skills Pay Information  
 - This section is more specific and intentional with using power pivot to determine skills associated with jobs. This helped me use a new feature to me that I didn't know existed until this project and I can really see the potential use cases for this tool. After importing all the data provided the power pivot tool I used automatically created this data sheet for this excel document for easy manipulation of desired skills.
