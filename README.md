@@ -278,9 +278,13 @@ Then I inserted these custom functions into the field list for the pivot table a
 To do this I created 3 new value fields in the forms of functions for the entire median salary worldwide, in the USA specifically, and any other desired country for easy comparison:
 ```
 median salary:=MEDIAN(data_jobs_salary[salary_year_avg])
+
 and
+
 median_salary_us:=CALCULATE([median salary], data_jobs_salary[job_country]="United States")
+
 and
+
 median salary non us:=CALCULATE([median salary], data_jobs_salary[job_country]<>"United States")
 ```
 
