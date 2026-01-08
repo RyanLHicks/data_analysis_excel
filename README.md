@@ -10,7 +10,7 @@
 - Use advanced formulas and excel languages to dive deep into specific questions to make realistic decisions.
 
 ### Overview
-- I will first import the publicly available job data information that collected data around the world in csv format from 2023.
+- I will first import the publicly available job data information that collected data around the world in csv format.
 - Analyze the dataset with complex LOOKUP, COUNT, IF, ISNUMBER, and MEDIAN functions.
 - Visualize the data into introductory graphs and dropdown menus that contatin the job titles, job countries, and job types that automatically filter their associated median salary, platform, and count of jobs.
 - Use the same data and import it into a new workbook that will use more advanced excel functionalities such as, Power Pivot, DAX, and Power Query to better analyze the dataset and come to more specific conclusions.
@@ -313,7 +313,7 @@ skill likliehood:=DIVIDE([skill count], [job count])
 - Power Pivot
 - Power Query
 ### The Future
-- I hope to use these learned skills to advance my personal career and use it to analyze a wide variety of disciplines ready to be looked at. I think using this tool is great for piecing together massive amounts of data and visualizing it all in one. I want to eventually use it for my passions in nuclear energy and pharmacy and uncover hidden data to help me make well informed decisions based on critical data
+- I hope to use these learned skills to advance my personal career and use it to analyze a wide variety of disciplines ready to be looked at. I think using this tool is great for piecing together massive amounts of data and visualizing it all in one. I want to eventually use it for my passions in nuclear energy and pharmacy and uncover hidden data to help me make well informed decisions based on critical data.
 ### Sources
 - Luke Barousse
 - Jobs Data Information
